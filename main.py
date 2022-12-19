@@ -56,10 +56,19 @@ def Dopisivanie_Attributov():
     with open('stroki.txt', 'w') as file:
         file.write(output)  # перезапись файла
 
+def Dopisivanie_Attributov1_1():
+    import re
+    sep = "'"
+    output = ''
+    with open("stroki.txt", 'r') as file:
+        for line in file:
+            output += (line.split(sep, 1)[0] + '\n')
+    with open("stroki.txt", 'w') as file:
+        file.write(output)
 
 
 def Dopisivanie_Attributov2():
-    text = '" /></a>'  # фраза, которая будет дописана в конец строки
+    text = '" >/></a>'  # фраза, которая будет дописана в конец строки
     output = ''  # инициализация результирующего текста
     count = 0
 
@@ -158,6 +167,7 @@ udalenie_strok()
 Udalenie_attributov()
 Udalenie_attributov2()
 Dopisivanie_Attributov()
+Dopisivanie_Attributov1_1
 Dopisivanie_Attributov2()
 soedinenie_filof()
 konec_file()
