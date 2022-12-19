@@ -2,10 +2,11 @@ from collections import OrderedDict
 import os
 import re
 
+
 def ParserAllTxtToStroki():
     clas = 'https://sun9'
-    a=0
-    b=0
+    a = 0
+    b = 0
 
     with open(f"all1.txt", "r") as file1:
         lines = file1.readlines()
@@ -19,15 +20,18 @@ def ParserAllTxtToStroki():
         file.write('Первый Файл закончен\n')
     print("Первый файл Закончен")
     print("Прочитано строк в первом файле " + str(a))
-    print("Записано  строк в первом файле " + str(b*2))
+    print("Записано  строк в первом файле " + str(b * 2))
     file1.close()
     file.close()
+
+
 def udalenie_strok():
     filename = 'stroki.txt'
     with open(filename) as file:
         uniq = OrderedDict.fromkeys(file)
     with open(filename, 'w') as file:
         file.writelines(uniq)
+
 
 def Udalenie_attributov():
     f = open("stroki.txt", "rt")
@@ -36,6 +40,7 @@ def Udalenie_attributov():
     f = open("stroki.txt", "w")
     f.write(newline)
 
+
 def Udalenie_attributov2():
     f = open("stroki.txt", "rt")
     inputfilecontents = f.read()
@@ -43,18 +48,20 @@ def Udalenie_attributov2():
     f = open("stroki.txt", "w")
     f.write(newline)
 
+
 def Dopisivanie_Attributov():
     text = '<a href="site.ru/link"><img src="'  # фраза, которая будет дописана в начало строки
     output = ''  # инициализация результирующего текста
-    count=0
+    count = 0
 
     with open('stroki.txt', 'r') as file:
         for line in file:  # считывание текущего файла
-            output += (text + line.replace('\n', '')+'\n')
-            count+=1
+            output += (text + line.replace('\n', '') + '\n')
+            count += 1
         print(count)
     with open('stroki.txt', 'w') as file:
         file.write(output)  # перезапись файла
+
 
 def Dopisivanie_Attributov1_1():
     import re
@@ -81,6 +88,7 @@ def Dopisivanie_Attributov2():
     with open('stroki.txt', 'w') as file:
         file.write(output)  # перезапись файла
 
+
 def Sozdanie_html():
     text = """  <html>
 <head>
@@ -92,6 +100,7 @@ def Sozdanie_html():
     with open('test.txt', 'w') as file:
         file.write(text)  # перезапись файла
 
+
 def soedinenie_filof():
     filenames = ['stroki.txt']
     with open('final.txt', 'w') as outfile:
@@ -102,15 +111,15 @@ def soedinenie_filof():
     print('Файлы Соединены ')
 
 
-
 def konec_file():
-    text="""
+    text = """
     </body>
 </html>
-    
+
     """
     file = open('final.txt', "a")
     file.write(text)
+
 
 def udalenie_musora():
     if os.path.isfile('stroki.txt'):
@@ -124,11 +133,15 @@ def udalenie_musora():
         print("success")
     else:
         print("File doesn't exists!")
+    if os.path.isfile('all1.txt'):
+        os.remove('all1.txt')
+        print("success")
+    else:
+        print("File doesn't exists!")
+
 
 def TxtToHmtl():
     os.rename('final.txt', 'final.html')
-
-
 
 
 def AllhtmlToTxt():
@@ -141,6 +154,7 @@ def AllhtmlToTxt():
             print(count)
     except FileNotFoundError:
         pass
+
 
 def Sozdanie_all1():
     try:
@@ -159,6 +173,8 @@ def Sozdanie_all1():
                             outfile.write(line)
     except FileNotFoundError:
         pass
+
+
 AllhtmlToTxt()
 Sozdanie_all1()
 Sozdanie_html()
@@ -167,7 +183,7 @@ udalenie_strok()
 Udalenie_attributov()
 Udalenie_attributov2()
 Dopisivanie_Attributov()
-Dopisivanie_Attributov1_1
+Dopisivanie_Attributov1_1()
 Dopisivanie_Attributov2()
 soedinenie_filof()
 konec_file()
